@@ -1,0 +1,94 @@
+@import './modules/variables';
+@import './modules/fonts';
+
+@mixin text_nav {
+    color: $primary;
+    font-size: 14px;
+    font-family: $text_font;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 1.12px;
+}
+@mixin flexible {
+    display: flex;
+    justify-content: space-between;
+}
+@mixin paddingY ($padding-top, $padding-bottom){
+    padding:$padding-top $padding-bottom;
+}
+@mixin title ($font-size, $line-height){
+    color: $primary;
+    font-size: $font-size;
+    font-family: $title_font;
+    font-weight: 400;
+    line-height: $line-height;
+}
+@mixin title_italic ($font-size, $line-height){
+    color: $italik;
+    font-size: $font-size;
+    font-family: $title_font;
+    font-style: italic;
+    font-weight: 400;
+    line-height: $line-height;
+}
+@mixin text {
+    color: $primary;
+    font-size: 18px;
+    font-family: $text_font;
+    font-weight: 300;
+    line-height: 26px;
+}
+
+* {
+    margin: 0;
+}
+.container {
+    max-width: 1170px;
+    margin: 0 auto;
+}
+.bg {
+    background: url(../image/first-screen-image.png);
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    padding-top: 30px;
+    header {
+        width: 100%;
+        height: 80px;
+        box-sizing: border-box;
+        @include paddingY(24px, 24px);
+        backdrop-filter: blur(9px);
+        .container {
+            @include flexible;
+            .navigation {
+                ul {
+                    @include flexible;
+                    gap: 30px;
+                    li {
+                        list-style-type: none;
+                        a {
+                            text-decoration: none;
+                            @include text_nav;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .first_screen {
+        .first_screen_content {
+            max-width: 523px;
+            h3{
+                @include title(44px, 52px);
+                span {
+                    @include title_italic(44px, 52px);
+                }
+            }
+            p {
+                max-width: 439px;
+                @include text;
+            }
+        }
+    }
+}
