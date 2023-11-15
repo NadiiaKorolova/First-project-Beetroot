@@ -16,6 +16,12 @@
 @mixin paddingY ($padding-top, $padding-bottom){
     padding:$padding-top $padding-bottom;
 }
+@mixin margin ($margin-top, $margin-right, $margin-bottom, $margin-left){
+    margin-top: $margin-top;
+    margin-right: $margin-right;
+    margin-bottom: $margin-bottom;
+    margin-left: $margin-left;
+}
 @mixin title ($font-size, $line-height){
     color: $primary;
     font-size: $font-size;
@@ -38,6 +44,45 @@
     font-weight: 300;
     line-height: 26px;
 }
+@mixin btn_bg ($width_bg){
+    height: 20px;
+    width: 100%;
+    position: relative;
+
+    &::after {
+        content: '';
+        height: 13px;
+        width: $width_bg;
+        position: absolute;
+        left: 10px;
+        bottom: -4px;
+        opacity: 0.30;
+        background: $secondary;
+        z-index: 0;
+    }
+}
+@mixin btn_a {
+        color: $secondary;
+        font-size: 20px;
+        font-family: $text_font;
+        font-weight: 700;
+        text-transform: uppercase;
+        line-height: 20px;
+        letter-spacing: 1.60px;
+        text-decoration: none;
+}
+@mixin bg_white ($max-width, $max-height) {
+    opacity: 0.9;
+    background: $white;
+    @include flexible;
+    max-width: $max-width;
+    max-height: $max-height;
+}
+@mixin divider($width, $beckground) {
+    width: $width;
+    height: 1px;
+    background: $beckground;
+}
 
 * {
     margin: 0;
@@ -57,7 +102,7 @@
         width: 100%;
         height: 80px;
         box-sizing: border-box;
-        @include paddingY(24px, 24px);
+        @include paddingY (24px, 24px);
         backdrop-filter: blur(9px);
         .container {
             @include flexible;
@@ -81,6 +126,7 @@
             max-width: 523px;
             h3{
                 @include title(44px, 52px);
+                @include margin (150px, auto, 20px, 0);
                 span {
                     @include title_italic(44px, 52px);
                 }
@@ -88,6 +134,81 @@
             p {
                 max-width: 439px;
                 @include text;
+            }
+            
+        }
+        .button{
+                @include btn_bg(112px);
+                @include margin(50px, auto, 154px, 0);
+
+            a {
+                @include btn_a;
+            }
+        }
+    }
+    .info {
+        position: relative;
+        .statistic_info {
+            @include bg_white (770px, 580px);
+            position: absolute;
+            top: 45px;
+            left: 535px;
+            .info_list {
+                @include paddingY(45px, 45px);
+                .info_item {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 12px;
+                    .num {
+                        display: flex;
+                        gap: 10px;
+                        align-items: flex-end;
+                        justify-content: center;
+                        span {
+                            @include title(40px, 50px);
+                            color: $symbolcolor;
+                        }
+                        h2{
+                            @include title(68px, 72px);
+                        }
+                    }
+                    h5 {
+                        @include text;
+                        text-align: center;
+                    }
+                }
+                .divider {
+                    @include divider(100px, $italik);
+                    @include margin(40px, auto, 40px, auto);
+                }
+            }
+            .info_text {
+                max-width: 400px;
+                p {
+                    @include text;
+                    @include margin(45px, auto, 50px, 0)
+                }
+                .button {
+                    @include btn_bg(172px);
+                    a {
+                        @include btn_a;
+                    }
+                }
+            }
+        }
+    }
+}
+.benefits {
+    @include margin(120px, auto, 120px, auto);
+    .benefits_card {
+        @include flexible;
+        flex-wrap: wrap;
+        gap: 30px;
+        .benefits_card_item {
+            max-width: 570px;
+            @include margin(30px, 0, 60px, 0);
+            .divider {
+                @include divider(100%, $symbolcolor);
             }
         }
     }
