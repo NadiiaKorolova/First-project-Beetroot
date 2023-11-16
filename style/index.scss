@@ -8,6 +8,7 @@
     font-weight: 400;
     line-height: 24px;
     letter-spacing: 1.12px;
+    text-decoration: none;
 }
 @mixin flexible {
     display: flex;
@@ -41,6 +42,7 @@
     font-style: italic;
     font-weight: 400;
     line-height: $line-height;
+    text-decoration: none;
 }
 @mixin text {
     color: $primary;
@@ -71,6 +73,20 @@
         opacity: 0.30;
         background: $secondary;
         z-index: 0;
+        
+    }
+    &:hover {
+        &::after {
+            content: '';
+            height: 13px;
+            width: $width_bg;
+            position: absolute;
+            left: 10px;
+            bottom: -4px;
+            opacity: 0.30;
+            background: $btn_hover;
+            z-index: 0;
+        }
     }
 }
 @mixin btn_a {
@@ -82,6 +98,9 @@
         line-height: 20px;
         letter-spacing: 1.60px;
         text-decoration: none;
+        &:hover{
+            color: $btn_hover;
+        }
 }
 @mixin bg_white ($max-width, $max-height) {
     opacity: 0.9;
@@ -94,6 +113,14 @@
     width: $width;
     height: 1px;
     background: $beckground;
+}
+@mixin a_hover {
+    width: 100%;
+    height: 3px;
+    background: $secondary;
+    position: absolute;
+    left: 0;
+    bottom: -5px;
 }
 
 * {
@@ -125,9 +152,16 @@
                     li {
                         list-style-type: none;
                         a {
-                            text-decoration: none;
                             @include text_nav;
+                            position: relative;
+                            &:hover {
+                                &::after {
+                                    content: '';
+                                    @include a_hover;
+                                }
+                            }
                         }
+
                     }
                 }
             }
@@ -139,7 +173,7 @@
             h3{
                 @include title(44px, 52px);
                 @include margin (150px, auto, 20px, 0);
-                span {
+                a {
                     @include title_italic(44px, 52px);
                 }
             }
@@ -167,6 +201,7 @@
             left: 535px;
             .info_list {
                 @include paddingY(45px, 45px);
+                @include margin(0, 56px, 0, 0);
                 .info_item {
                     display: flex;
                     flex-direction: column;
@@ -228,7 +263,7 @@
                 @include paddingX(30px, 30px);
                 h3 {
                     @include title(40px, 48px);
-                    span {
+                    a {
                         @include title_italic(40px, 48px);
                     }
                 }
@@ -284,7 +319,7 @@
         h3 {
             @include title(40px, 48px);
             @include margin(0, auto, 20px, 0);
-            span {
+            a {
                 @include title_italic(40px, 48px);
             }
         }
@@ -387,6 +422,92 @@
                 @include title_italic(20px, 20px);
                 letter-spacing: 1.60px;
                 color: $white;
+            }
+        }
+    }
+}
+.contacts {
+    .container {
+        border-top: 1px $symbolcolor solid;
+        .contacts_content {
+            @include flexible;
+            @include margin(60px, 0, 100px, 0);
+            .contacts_left {
+                max-width: 470px;
+                h3 {
+                    @include title(40px, 39px);
+                    a {
+                        @include title_italic(40px, 39px);
+                    }
+                }
+                p {
+                    @include text;
+                    @include margin(29px, auto, 99px, 0);
+                }
+            }
+            .contacts_right {
+                @include flexible;
+                flex-direction: column;
+                width: 470px;
+                input {
+                    border: $white;
+                    border-bottom: 1px $primary solid;
+                    opacity: 0.3;
+                    @include paddingY(0, 12px);
+                    &::placeholder {
+                        @include title_italic(18px, 20px);
+                        letter-spacing: 1.44px;
+                        color: $primary;
+                    }
+                }
+                button {
+                    @include btn_bg(163px);
+                    @include btn_a;
+                    align-self: start;
+                    width: 177px;
+                    border: none;
+                    background: none;
+                    text-align: left;
+                }
+            }
+        }
+    }
+}
+footer {
+    .container {
+        @include paddingY(30px, 30px);
+        border-top: 1px $symbolcolor solid;
+        .footer_content {
+            @include flexible;
+            span {
+                @include text;
+                font-size: 14px;
+                a {
+                    margin-left: 12px;
+                    position: relative;
+                    &:hover {
+                        &::after {
+                            content: '';
+                            @include a_hover;
+                        }
+                    }
+                }
+            }
+            a {
+                @include text_nav;
+            }
+            .agreement {
+                @include flexible;
+                gap: 32px;
+                a {
+                    position: relative;
+                    &:hover {
+                        &::after {
+                            content: '';
+                            @include a_hover;
+                        }
+                    }
+                }
             }
         }
     }
