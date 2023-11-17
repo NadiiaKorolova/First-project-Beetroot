@@ -43,6 +43,10 @@
     font-weight: 400;
     line-height: $line-height;
     text-decoration: none;
+    &:hover {
+        color: $italic_hover;
+        font-weight: 600;
+    }
 }
 @mixin text {
     color: $primary;
@@ -461,11 +465,18 @@
                 width: 470px;
                 input {
                     width: 100%;
+                    height: 20px;
                     border: $white;
                     border-bottom: 1px $primary solid;
                     opacity: 0.3;
                     overflow: hidden;
                     @include paddingY(0, 12px);
+                    &:focus {
+                        background: $italik;
+                        border: $primary 2px solid;
+                        outline: hidden;
+                        border-radius: 5px;
+                    }
                     &::placeholder {
                         @include title_italic(18px, 20px);
                         letter-spacing: 1.44px;
@@ -517,6 +528,540 @@ footer {
                         &::after {
                             content: '';
                             @include a_hover;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media (prefers-color-scheme: dark){
+    
+    body {
+        background: #161926;
+    }
+    @mixin text_nav {
+        color: $white;
+        font-size: 14px;
+        font-family: $text_font;
+        font-weight: 400;
+        line-height: 24px;
+        letter-spacing: 1.12px;
+        text-decoration: none;
+    }
+    @mixin flexible {
+        display: flex;
+        justify-content: space-between;
+    }
+    @mixin paddingY ($padding-top, $padding-bottom){
+        padding-top:$padding-top;
+        padding-bottom: $padding-bottom;
+    }
+    @mixin paddingX ($padding-left, $padding-right){
+        padding-left: $padding-left;
+        padding-right: $padding-right;
+    }
+    @mixin margin ($margin-top, $margin-right, $margin-bottom, $margin-left){
+        margin-top: $margin-top;
+        margin-right: $margin-right;
+        margin-bottom: $margin-bottom;
+        margin-left: $margin-left;
+    }
+    @mixin title ($font-size, $line-height){
+        color: $white;
+        font-size: $font-size;
+        font-family: $title_font;
+        font-weight: 400;
+        line-height: $line-height;
+    }
+    @mixin title_italic ($font-size, $line-height){
+        color: $italic_hover;
+        font-size: $font-size;
+        font-family: $title_font;
+        font-style: italic;
+        font-weight: 400;
+        line-height: $line-height;
+        text-decoration: none;
+        &:hover {
+            color: $italic_hover;
+            font-weight: 600;
+        }
+    }
+    @mixin text {
+        color: $white;
+        font-size: 18px;
+        font-family: $text_font;
+        font-weight: 300;
+        line-height: 26px;
+    }
+    @mixin text_mobile {
+        font-size: 15px;
+        line-height: 19px;
+    }
+    @mixin text_white ($font-size, $line-height){
+        font-size: $font-size;
+        font-family: Lato;
+        font-weight: 400;
+        line-height: $line-height;
+        color: $white;
+    }
+    @mixin btn_bg ($width_bg){
+        height: 20px;
+        width: 100%;
+        position: relative;
+    
+        &::after {
+            content: '';
+            height: 13px;
+            width: $width_bg;
+            position: absolute;
+            left: 10px;
+            bottom: -4px;
+            opacity: 0.30;
+            background: $secondary_dark;
+            z-index: 0;
+            
+        }
+        &:hover {
+            &::after {
+                content: '';
+                height: 13px;
+                width: $width_bg;
+                position: absolute;
+                left: 10px;
+                bottom: -4px;
+                opacity: 0.30;
+                background: $btn_hover_dark;
+                z-index: 0;
+            }
+        }
+    }
+    @mixin btn_a {
+            color: $secondary_dark;
+            font-size: 20px;
+            font-family: $text_font;
+            font-weight: 700;
+            text-transform: uppercase;
+            line-height: 20px;
+            letter-spacing: 1.60px;
+            text-decoration: none;
+            &:hover{
+                color: $btn_hover_dark;
+            }
+    }
+    @mixin bg_white ($max-width, $max-height) {
+        opacity: 0.9;
+        background: $bg_dark;
+        @include flexible;
+        max-width: $max-width;
+        max-height: $max-height;
+    }
+    @mixin divider($width, $beckground) {
+        width: $width;
+        height: 1px;
+        background: $beckground;
+    }
+    @mixin a_hover {
+        width: 100%;
+        height: 3px;
+        background: $secondary_dark;
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+    }
+    
+ 
+    .bg {
+        background: url(../image/first-screen-imagedark.png);
+        width: 100%;
+        height: auto;
+        background-repeat: no-repeat;
+        box-sizing: border-box;
+        padding-top: 30px;
+        header {
+            width: 100%;
+            height: 80px;
+            box-sizing: border-box;
+            @include paddingY (24px, 24px);
+            backdrop-filter: blur(9px);
+            .container {
+                @include flexible;
+                .navigation_desktop {
+                    ul {
+                        @include flexible;
+                        gap: 30px;
+                        li {
+                            list-style-type: none;
+                            a {
+                                @include text_nav;
+                                position: relative;
+                                &:hover {
+                                    &::after {
+                                        content: '';
+                                        @include a_hover;
+                                    }
+                                }
+                            }
+    
+                        }
+                    }
+                }
+             
+            }
+        }
+        header .container {
+            .navigation_mobile {
+                display: none;
+            }
+        }
+        .first_screen {
+            .first_screen_content {
+                max-width: 523px;
+                h3{
+                    @include title(44px, 52px);
+                    @include margin (150px, auto, 20px, 0);
+                    a {
+                        @include title_italic(44px, 52px);
+                    }
+                }
+                p {
+                    max-width: 439px;
+                    @include text;
+                }
+                
+            }
+            .button{
+                    @include btn_bg(112px);
+                    @include margin(50px, auto, 154px, 0);
+    
+                a {
+                    @include btn_a;
+                }
+            }
+        }
+        .info {
+            position: relative;
+            .statistic_info {
+                @include bg_white (770px, 580px);
+                position: absolute;
+                top: 45px;
+                left: 535px;
+                .info_list {
+                    @include paddingY(45px, 45px);
+                    @include margin(0, 56px, 0, 56px);
+                    .info_item {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 12px;
+                        .num {
+                            display: flex;
+                            gap: 10px;
+                            align-items: flex-end;
+                            justify-content: center;
+                            span {
+                                @include title(40px, 50px);
+                                color: $symbolcolor;
+                            }
+                            h2{
+                                @include title(68px, 72px);
+                            }
+                        }
+                        h5 {
+                            @include text;
+                            text-align: center;
+                        }
+                    }
+                    .divider {
+                        @include divider(100px, $italik);
+                        @include margin(40px, auto, 40px, auto);
+                    }
+                }
+                .info_text {
+                    max-width: 400px;
+                    p {
+                        @include text;
+                        @include margin(45px, auto, 50px, 0)
+                    }
+                    .button {
+                        @include btn_bg(172px);
+                        a {
+                            @include btn_a;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .benefits {
+        @include margin(120px, auto, 120px, auto);
+        .benefits_card {
+            @include flexible;
+            flex-wrap: wrap;
+            gap: 30px;
+            .benefits_card_item {
+                max-width: 570px;
+                .divider {
+                    @include divider(100%, $symbolcolor);
+                    @include margin(0, 0, 30px, 0);
+                }
+                .benefits_card_item_content {
+                    @include paddingY(20px, 20px);
+                    @include paddingX(30px, 30px);
+                    h3 {
+                        @include title(40px, 48px);
+                        a {
+                            @include title_italic(40px, 48px);
+                        }
+                    }
+                    p {
+                        @include text;
+                        @include margin(30px, auto, auto, 0);
+                        max-width: 500px;
+                    }
+                }
+            }
+        }
+    }
+    .quote {
+        @include margin(0, auto, 120px, 0);
+        .container {
+            background: url(../image/quote-background.png);
+           
+            height: auto;
+            position: relative;
+            svg {
+                position: absolute;
+                top:70px;
+                left: 100px;
+            }
+            .quote_content {
+                @include paddingX(160px, 300px);
+                @include paddingY(100px, 100px);
+                p {
+                    @include text_white(32px, 46px);
+                    letter-spacing: 1.28px;
+                }
+                h6 {
+                    @include title_italic(20px, 20px);
+                    letter-spacing: 1.6px;
+                    color: $white;
+                    @include margin(40px, auto, 0, 0)
+                }
+            }
+        }
+    }
+    .video {
+        .video_wrapper {
+            max-width: 970px;
+            border: 1px #E4E4E4 solid;
+            border-radius: 32px;
+            @include paddingX(30px, 70px);
+            @include paddingY(31px, 31px);
+            box-sizing: border-box;
+            @include margin(0, auto, 0, auto);
+        }
+        .video_content {
+            max-width: 970px;
+            @include margin(50px, auto, 120px, auto);
+            h3 {
+                @include title(40px, 48px);
+                @include margin(0, auto, 20px, 0);
+                a {
+                    @include title_italic(40px, 48px);
+                }
+            }
+            p {
+                max-width: 897px;
+                @include text;
+                @include paddingX(0, 100px);
+            }
+        }
+    }
+    .promises {
+        .promises_content {
+            position: relative;
+            .promises_card {
+                @include bg_white(770px, auto);
+                @include flexible;
+                @include paddingX(70px, auto);
+                @include paddingY(75px, 75px);
+                box-sizing: border-box;
+                justify-content: flex-start;
+                flex-wrap: wrap;
+                gap: 100px;
+                position: absolute;
+                top: 45px;
+                left: 399px;
+                .promises_card_item {
+                    width: 300px;
+                    height: auto;
+                    h5 {
+                        @include title(24px, 48px);
+                        @include margin(0, auto, 15, 0)
+                    }
+                    p {
+                        @include text;
+                        line-height: 26px;
+                    }
+                    .button {
+                        @include btn_bg(112px);
+                        a {
+                            @include btn_a;
+                        }
+                    }
+                    &:last-child {
+                        box-sizing: border-box;
+                        border: 1px #E4E4E4 solid;
+                        @include paddingX(88px, 95px);
+                        @include paddingY(33px, 37px);
+                        justify-self: flex-end;
+                    }
+                }
+              
+            }
+        }
+    }
+    .reviews {
+        @include margin(120px, auto, 120px, auto);
+        h3 {
+            @include title(40px, 48px);
+            a {
+                @include title_italic(40px, 48px);
+                text-decoration: none;
+            }
+        }
+        p {
+            @include text;
+            @include margin(20px, auto, 50px, 0);
+        }
+        .review_card {
+            @include flexible;
+            gap: 30px;
+            .review_card_item {
+                max-width: 370px;
+                height: auto;
+                position: relative;
+                &::before {
+                    content: '';
+                    background:  rgba(25, 28, 41, 0.60);
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                }
+                img {
+                    width: 100%;
+                    height: 100%;
+                    z-index: -1;
+                   
+                }
+                p {
+                    position: absolute;
+                    top: 30px;
+                    left: 40px;
+                    @include text_white(16px, 26px);
+                    max-width: 290px;
+                    @include margin(0, 0, 0, 0)
+                }
+                h5 {
+                    position: absolute;
+                    bottom: 30px;
+                    left: 40px;
+                    @include title_italic(20px, 20px);
+                    letter-spacing: 1.60px;
+                    color: $white;
+                }
+            }
+        }
+    }
+    .contacts {
+        .container {
+            border-top: 1px $symbolcolor solid;
+            .contacts_content {
+                @include flexible;
+                @include margin(60px, 0, 100px, 0);
+                .contacts_left {
+                    max-width: 470px;
+                    h3 {
+                        @include title(40px, 39px);
+                        a {
+                            @include title_italic(40px, 39px);
+                        }
+                    }
+                    p {
+                        @include text;
+                        @include margin(29px, auto, 99px, 0);
+                    }
+                }
+                .contacts_right {
+                    @include flexible;
+                    flex-direction: column;
+                    width: 470px;
+                    input {
+                        width: 100%;
+                        height: 20px;
+                        border: $white;
+                        border-bottom: 1px $primary solid;
+                        opacity: 0.3;
+                        overflow: hidden;
+                        @include paddingY(0, 12px);
+                        &:focus {
+                            background: $italik;
+                            border: $primary 2px solid;
+                            outline: hidden;
+                            border-radius: 5px;
+                        }
+                        &::placeholder {
+                            @include title_italic(18px, 20px);
+                            letter-spacing: 1.44px;
+                            color: $primary;
+                        }
+                    }
+                    button {
+                        @include btn_bg(163px);
+                        @include btn_a;
+                        align-self: start;
+                        width: 177px;
+                        border: none;
+                        background: none;
+                        text-align: left;
+                    }
+                }
+            }
+        }
+    }
+    footer {
+        .container {
+            @include paddingY(30px, 30px);
+            border-top: 1px $symbolcolor solid;
+            .footer_content {
+                @include flexible;
+                span {
+                    @include text;
+                    font-size: 14px;
+                    a {
+                        margin-left: 12px;
+                        position: relative;
+                        &:hover {
+                            &::after {
+                                content: '';
+                                @include a_hover;
+                            }
+                        }
+                    }
+                }
+                a {
+                    @include text_nav;
+                }
+                .agreement {
+                    @include flexible;
+                    gap: 32px;
+                    a {
+                        position: relative;
+                        &:hover {
+                            &::after {
+                                content: '';
+                                @include a_hover;
+                            }
                         }
                     }
                 }
