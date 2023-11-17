@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/fa82261c34.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./style/normalise.css">
     <link rel="stylesheet" href="./style/index.css">
-    <title>Document</title>
+    <link type="image/x-icon" rel="icon" href="./image/circle-dollar-to-slot-solid.ico">
+    <title>Clearinghouse</title>
 </head>
 <body>
 <section class="bg">
@@ -17,7 +19,7 @@
                     <use xlink:href="#logo"></use>
                 </svg>
             </div>
-            <div class="navigation" style="font-size:0">
+            <div class="navigation_desktop" style="font-size:0">
                 <nav>
                     <ul>
                         <li>
@@ -40,6 +42,35 @@
                         </li>
                     </ul>
                 </nav>
+            </div>
+            <div class="navigation_mobile">
+                <input type="checkbox" id="nav" name="nav" class="checkbox_nav">
+                <div class="overlay">
+                    <nav class="menu">
+                        <ul>
+                            <li>
+                                <a href="#">Home</a>
+                            </li>
+                            <li>
+                                <a href="#">About</a>
+                            </li>
+                            <li>
+                                <a href="#">Products</a>
+                            </li>
+                            <li>
+                                <a href="#">Use Cases</a>
+                            </li>
+                            <li>
+                                <a href="#">Pricing</a>
+                            </li>
+                            <li>
+                                <a href="#">Resources</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <label for="nav"><i class="fa-solid fa-xmark"></i></label>
+                </div>
+                <label for="nav"><i class="fa-solid fa-bars"></i></label>
             </div>
         </div>
     </header>
@@ -253,12 +284,18 @@
                         possible.
                     </p>
                 </div>
-                <div class="contacts_right">
-                    <input type="text" id="name" name="name" placeholder="Your name" required>
-                    <input type="email" id="email" name="email" placeholder="Email" required>
-                    <input type="textarea" id="textarea" name="textarea" placeholder="Tell more">
+                <form action="#" method="get" class="contacts_right">
+                    <div class="input">
+                        <input type="text" id="name" name="name" placeholder="Your name" required>
+                    </div>
+                    <div class="input">
+                        <input type="email" id="email" name="email" placeholder="Email" required>
+                    </div>
+                    <div class="input">
+                        <input type="textarea" id="textarea" name="textarea" placeholder="Tell more">
+                    </div>
                     <button>SEND REQuest</button>
-                </div>
+                </form>
             </div>
         </div>
     </section>
