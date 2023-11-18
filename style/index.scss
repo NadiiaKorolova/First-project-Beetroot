@@ -86,8 +86,8 @@
     &:hover {
         &::after {
             content: '';
-            height: 13px;
-            width: $width_bg;
+            height: 16px;
+            width: $width_bg+3px;
             position: absolute;
             left: 10px;
             bottom: -4px;
@@ -108,6 +108,8 @@
         text-decoration: none;
         &:hover{
             color: $btn_hover;
+            font-size: 24px;
+            font-weight: 800;
         }
 }
 @mixin bg_white ($max-width, $max-height) {
